@@ -1183,7 +1183,7 @@ namespace GLTFast.Jobs {
         public void Execute(int i) {
             var resultV = (float3*) (((byte*)result) + (i*outputByteStride));
             var off = (ushort*) (input + (inputByteStride*i));
-            *resultV = new float3(-off[0], off[1], off[2]);
+            *resultV = new float3(-(float)off[0], off[1], off[2]);
         }
     }
 
@@ -1237,7 +1237,7 @@ namespace GLTFast.Jobs {
         public void Execute(int i) {
             var resultV = (float3*)  (((byte*)result) + (i*outputByteStride));
             var off = (short*) (input + (i*inputByteStride));
-            *resultV = new float3(-off[0],off[1],off[2]);
+            *resultV = new float3(-(float)off[0],off[1],off[2]);
         }
     }
 
@@ -1265,7 +1265,7 @@ namespace GLTFast.Jobs {
             var tmp = new float3(off[0], off[1], off[2]) / short.MaxValue;
             var tmp2 = max(tmp, -1f);
             tmp2.x *= -1;
-            *resultV = normalize(tmp);
+            *resultV = normalize(tmp2);
         }
     }
 
@@ -1289,7 +1289,7 @@ namespace GLTFast.Jobs {
         public void Execute(int i) {
             var resultV = (float3*) (((byte*)result) + (i*outputByteStride));
             var off = input + (inputByteStride*i);
-            *resultV = new float3(-off[0], off[1], off[2]);
+            *resultV = new float3(-(float)off[0], off[1], off[2]);
         }
     }
 
@@ -1341,7 +1341,7 @@ namespace GLTFast.Jobs {
         public void Execute(int i) {
             var off = input + (i*inputByteStride);
             var resultV = (float3*) (((byte*) result) + (i*outputByteStride));
-            *resultV = new float3(-off[0],off[1],off[2]);
+            *resultV = new float3(-(float)off[0],off[1],off[2]);
         }
     }
 
